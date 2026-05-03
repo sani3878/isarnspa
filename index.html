@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Isarn Spa</title>
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Playfair Display', serif;
+    }
+  </style>
+</head>
+
+<body class="bg-[#fbf7ef] text-stone-900">
+
+<!-- HEADER -->
+<header class="sticky top-0 z-50 border-b bg-[#fbf7ef]/95 backdrop-blur">
+  <div class="max-w-7xl mx-auto flex justify-between items-center px-6 py-4">
+    <div class="flex items-center gap-3">
+      <div class="w-12 h-12 flex items-center justify-center rounded-full bg-emerald-900 text-amber-100 text-2xl">
+        ✿
+      </div>
+      <div>
+        <div class="text-2xl font-bold">Isarn Spa</div>
+        <div class="text-xs tracking-widest text-gray-500">THAI WELLNESS</div>
+      </div>
+    </div>
+
+    <nav class="hidden md:flex gap-6 font-semibold">
+      <a href="#services">Services</a>
+      <a href="#experience">Experience</a>
+      <a href="#visit">Visit</a>
+      <a href="#visit" class="bg-emerald-900 text-white px-5 py-2 rounded-full">Book Now</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="py-20 px-6 max-w-7xl mx-auto grid md:grid-cols-2 gap-10 items-center">
+  <div>
+    <h1 class="text-5xl md:text-6xl font-bold leading-tight">
+      Relax, renew, and feel at home.
+    </h1>
+    <p class="mt-6 text-lg text-gray-600">
+      Isarn Spa brings warm Thai hospitality and deeply restorative wellness treatments to your neighborhood.
+    </p>
+
+    <div class="mt-8 flex gap-4">
+      <a href="#visit" class="bg-emerald-900 text-white px-6 py-3 rounded-full">Book Appointment</a>
+      <a href="#services" class="border px-6 py-3 rounded-full">View Services</a>
+    </div>
+  </div>
+
+  <div class="bg-emerald-900 text-white p-8 rounded-3xl">
+    <h2 class="text-3xl font-bold">Isarn Harmony Massage</h2>
+    <p class="mt-4 text-gray-200">
+      A peaceful blend of Thai pressure therapy, gentle stretching, and aromatic oils.
+    </p>
+    <div class="mt-6 text-2xl font-bold">$85</div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="max-w-7xl mx-auto px-6 py-20">
+  <h2 class="text-4xl font-bold mb-10">Our Services</h2>
+
+  <div class="grid md:grid-cols-4 gap-6">
+    <div class="bg-white p-6 rounded-2xl shadow">
+      <h3 class="text-xl font-bold">Traditional Thai Massage</h3>
+      <p class="text-sm text-gray-500">60 / 90 min</p>
+      <p class="mt-3 text-gray-600">Deep stretching and pressure therapy.</p>
+    </div>
+
+    <div class="bg-white p-6 rounded-2xl shadow">
+      <h3 class="text-xl font-bold">Aromatherapy Massage</h3>
+      <p class="text-sm text-gray-500">60 / 90 min</p>
+      <p class="mt-3 text-gray-600">Relaxing oils and calming experience.</p>
+    </div>
+
+    <div class="bg-white p-6 rounded-2xl shadow">
+      <h3 class="text-xl font-bold">Hot Stone Therapy</h3>
+      <p class="text-sm text-gray-500">75 / 90 min</p>
+      <p class="mt-3 text-gray-600">Warm stones relieve tension.</p>
+    </div>
+
+    <div class="bg-white p-6 rounded-2xl shadow">
+      <h3 class="text-xl font-bold">Couples Retreat</h3>
+      <p class="text-sm text-gray-500">90 min</p>
+      <p class="mt-3 text-gray-600">Perfect shared experience.</p>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience" class="bg-emerald-900 text-white py-20 px-6">
+  <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-10">
+    <div>
+      <h2 class="text-4xl font-bold">Thai warmth. Modern comfort.</h2>
+      <p class="mt-6 text-gray-200">
+        Warm greetings, soothing aromas, and peaceful atmosphere.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-2 gap-4">
+      <div class="bg-white/10 p-4 rounded-xl">Authentic Thai treatments</div>
+      <div class="bg-white/10 p-4 rounded-xl">Private rooms</div>
+      <div class="bg-white/10 p-4 rounded-xl">Licensed therapists</div>
+      <div class="bg-white/10 p-4 rounded-xl">Natural oils</div>
+    </div>
+  </div>
+</section>
+
+<!-- VISIT -->
+<section id="visit" class="max-w-7xl mx-auto px-6 py-20">
+  <h2 class="text-4xl font-bold mb-6">Visit Us</h2>
+
+  <div class="grid md:grid-cols-2 gap-6">
+    <div>
+      <p>📍 Your City, USA</p>
+      <p>☎ (000) 000-0000</p>
+      <p>✉ hello@isarnspa.com</p>
+      <p>⏰ Mon–Sun 10am–8pm</p>
+    </div>
+
+    <div class="bg-amber-200 p-6 rounded-2xl">
+      <h3 class="text-2xl font-bold">Grand Opening</h3>
+      <p class="mt-2">15% off your first visit</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="text-center py-6 border-t">
+  © 2026 Isarn Spa
+</footer>
+
+</body>
+</html>
