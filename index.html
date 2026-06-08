@@ -3,214 +3,680 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Isarn Spa</title>
-
-  <!-- Tailwind CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
-
+  <title>Isarn Thai Spa – Traditional Thai Massage | Salem, WI</title>
+  <meta name="description" content="Isarn Thai Spa in Salem, WI offers traditional Thai massage, Swedish massage, deep tissue, body scrub, and foot massage. Book your session today at 928-929-2922." />
+  <meta name="keywords" content="Thai spa Salem WI, Thai massage Wisconsin, deep tissue massage Salem, foot massage Kenosha County, traditional Thai massage, body scrub spa Wisconsin" />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:title" content="Isarn Thai Spa – Salem, WI" />
+  <meta property="og:description" content="Traditional Thai massage, Swedish, deep tissue, body scrub & more. Walk-ins welcome. Salem, WI 53168." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://isarnspa.com" />
+  <link rel="canonical" href="https://isarnspa.com" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "DaySpa",
+    "name": "Isarn Thai Spa",
+    "url": "https://isarnspa.com",
+    "telephone": "+19289292922",
+    "email": "isarnthaispa@gmail.com",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "8607 Antioch Road",
+      "addressLocality": "Salem",
+      "addressRegion": "WI",
+      "postalCode": "53168",
+      "addressCountry": "US"
+    },
+    "openingHoursSpecification": [
+      {"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"10:00","closes":"20:00"},
+      {"@type":"OpeningHoursSpecification","dayOfWeek":["Saturday","Sunday"],"opens":"11:00","closes":"19:00"}
+    ],
+    "priceRange": "$$",
+    "servesCuisine": "Thai Massage & Spa"
+  }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Cinzel:wght@400;500;600&family=Raleway:wght@300;400;500&display=swap" rel="stylesheet" />
   <style>
+    :root {
+      --gold: #C9A84C;
+      --gold-light: #E8C97A;
+      --gold-dark: #7A5A0A;
+      --cream: #FAF6EE;
+      --dark: #0E0D0B;
+      --deep: #1A1710;
+      --green: #2D5016;
+      --red: #7A1A1A;
+      --text: #1A1814;
+      --text-light: #3D3830;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
-    body { font-family: 'Playfair Display', serif; }
+    body { background: var(--cream); color: var(--text); font-family: 'Raleway', sans-serif; font-weight: 300; overflow-x: hidden; }
 
-    /* Mobile menu slide-down animation */
-    #mobile-menu {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.35s ease, opacity 0.3s ease;
-      opacity: 0;
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      background: rgba(10,9,7,0.93); backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(201,168,76,0.25);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 4vw; height: 68px;
     }
-    #mobile-menu.open {
-      max-height: 400px;
-      opacity: 1;
-    }
+    .nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .nav-logo img { height: 44px; width: auto; }
+    .nav-logo span { font-family: 'Cinzel', serif; font-size: 1rem; letter-spacing: 0.18em; color: var(--gold); text-transform: uppercase; }
+    .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
+    .nav-links a { color: rgba(240, 240, 240, 0.979); text-decoration: none; font-size: 0.78rem; letter-spacing: 0.14em; text-transform: uppercase; transition: color 0.25s; }
+    .nav-links a:hover { color: var(--gold-light); }
+    .nav-cta { background: linear-gradient(135deg, var(--gold), var(--gold-dark)); color: var(--dark) !important; padding: 8px 20px; border-radius: 2px; font-weight: 500 !important; }
+    .nav-cta:hover { opacity: 0.88; }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 6px; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: var(--gold); transition: 0.3s; }
+    .mobile-menu { display: none; position: fixed; top: 68px; left: 0; right: 0; background: rgba(10,9,7,0.97); padding: 2rem; flex-direction: column; gap: 1.5rem; border-bottom: 1px solid rgba(201,168,76,0.2); z-index: 199; }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a { color: rgba(255,255,255,0.8); text-decoration: none; font-size: 1.1rem; letter-spacing: 0.12em; text-transform: uppercase; padding-bottom: 0.5rem; border-bottom: 1px solid rgba(201,168,76,0.1); }
 
-    /* Hamburger → X animation */
-    #burger-btn .bar {
-      display: block;
-      width: 22px;
-      height: 2px;
-      background: currentColor;
-      transition: transform 0.3s ease, opacity 0.2s ease;
-      transform-origin: center;
+    /* HERO */
+    #hero { min-height: 100vh; background: linear-gradient(160deg, #0E0D0B 0%, #1A1710 40%, #0D1208 100%); display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 120px 5vw 80px; position: relative; overflow: hidden; }
+    .hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 80% 60% at 50% 30%, rgba(201,168,76,0.07) 0%, transparent 70%), radial-gradient(ellipse 40% 40% at 80% 70%, rgba(45,80,22,0.1) 0%, transparent 60%); pointer-events: none; }
+    .hero-ornament { position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, transparent, var(--gold), var(--gold-light), var(--gold), transparent); }
+    #hero img.hero-logo { width: min(320px, 65vw); margin-bottom: 2.5rem; animation: fadeUp 1s ease both; filter: drop-shadow(0 0 40px rgba(201,168,76,0.15)); }
+    #hero h1 { font-family: 'Cinzel', serif; font-size: clamp(2.2rem, 6vw, 4.5rem); color: var(--gold); letter-spacing: 0.3em; text-transform: uppercase; line-height: 1.1; animation: fadeUp 1s 0.2s ease both; }
+    #hero .tagline { font-family: 'Cormorant Garamond', serif; font-size: clamp(1rem, 2.5vw, 1.4rem); color: rgba(255,255,255,0.88); letter-spacing: 0.25em; margin-top: 0.8rem; text-transform: uppercase; animation: fadeUp 1s 0.35s ease both; }
+    .hero-divider { width: 120px; height: 1px; background: linear-gradient(90deg, transparent, var(--gold), transparent); margin: 2rem auto; animation: fadeUp 1s 0.45s ease both; }
+    .hero-hours { font-size: 0.9rem; letter-spacing: 0.2em; color: rgba(255,255,255,0.85); text-transform: uppercase; animation: fadeUp 1s 0.55s ease both; line-height: 1.9; }
+    .hero-hours strong { color: var(--gold-light); font-weight: 500; }
+    .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; margin-top: 2.5rem; animation: fadeUp 1s 0.7s ease both; }
+    .btn-book { display: inline-block; padding: 16px 40px; background: transparent; border: 1px solid var(--gold); color: var(--gold); font-family: 'Cinzel', serif; font-size: 0.8rem; letter-spacing: 0.3em; text-transform: uppercase; text-decoration: none; cursor: pointer; transition: all 0.35s; position: relative; overflow: hidden; }
+    .btn-book::before { content: ''; position: absolute; inset: 0; background: var(--gold); transform: translateX(-100%); transition: transform 0.35s ease; z-index: -1; }
+    .btn-book:hover { color: var(--dark); }
+    .btn-book:hover::before { transform: translateX(0); }
+    .btn-gift { display: inline-block; padding: 16px 40px; background: linear-gradient(135deg, var(--gold), var(--gold-dark)); color: rgb(250, 250, 250); font-family: 'Cinzel', serif; font-size: 0.9rem; font-weight: 700; letter-spacing: 0.3em; text-transform: uppercase; text-decoration: none; cursor: pointer; transition: opacity 0.3s; }
+    .btn-gift:hover { opacity: 0.85; }
+
+    /* SECTIONS */
+    section { padding: 100px 5vw; }
+    .section-label { font-family: 'Cinzel', serif; font-size: 0.65rem; letter-spacing: 0.4em; color: var(--gold); text-transform: uppercase; display: block; margin-bottom: 1rem; }
+    .section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 4vw, 3rem); font-weight: 300; color: var(--dark); line-height: 1.2; }
+    .section-title em { font-style: italic; color: var(--gold); }
+    .gold-line { width: 60px; height: 1px; background: linear-gradient(90deg, var(--gold), transparent); margin: 1.5rem 0 2.5rem; }
+    .gold-line.center { margin: 1.5rem auto 2.5rem; }
+
+    /* INTRO */
+    #intro { background: var(--dark); text-align: center; padding: 80px 5vw; }
+    #intro .section-title { color: var(--cream); }
+    #intro p { max-width: 680px; margin: 0 auto; font-family: 'Cormorant Garamond', serif; font-size: clamp(1.1rem, 2.2vw, 1.3rem); color: rgba(255,255,255,0.9); line-height: 1.85; }
+    .pillars { display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem; margin-top: 3.5rem; }
+    .pillar { flex: 1; min-width: 160px; max-width: 200px; text-align: center; }
+    .pillar-icon { width: 52px; height: 52px; margin: 0 auto 1rem; border: 1px solid rgba(201,168,76,0.35); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; }
+    .pillar h4 { font-family: 'Cinzel', serif; font-size: 0.65rem; letter-spacing: 0.22em; color: var(--gold); text-transform: uppercase; }
+
+    /* SERVICES */
+    #services { background: var(--cream); }
+    .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5px; background: rgba(201,168,76,0.15); border: 1px solid rgba(201,168,76,0.15); margin-top: 3rem; }
+    .service-card { background: var(--cream); padding: 2.5rem 2rem; position: relative; transition: background 0.3s; overflow: hidden; }
+    
+    .service-card:hover {
+    background: linear-gradient(135deg, #F7E7B5 0%, var(--gold-light) 35%, var(--gold) 100%);
+    border-color: rgba(201,168,76,.4);
+    box-shadow: 0 10px 30px rgba(201,168,76,.2);
     }
-    #burger-btn.open .bar:nth-child(1) { transform: translateY(6px) rotate(45deg); }
-    #burger-btn.open .bar:nth-child(2) { opacity: 0; }
-    #burger-btn.open .bar:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+    .service-accent { width: 32px; height: 3px; margin-bottom: 1.2rem; border-radius: 2px; }
+    .service-card h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.45rem; font-weight: 500; color: var(--dark); margin-bottom: 0.8rem; line-height: 1.25; }
+    .service-card .desc { font-size: 0.92rem; color: var(--text-light); line-height: 1.8; margin-bottom: 1.6rem; }
+    .price-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.5rem 1rem; }
+    .price-item { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px solid rgba(4, 4, 4, 0.12); }
+    .price-item .dur { font-size: 0.9rem; font-weight: 600; color: rgb(92, 92, 92); letter-spacing: 0.05em; }
+    .price-item .amt { font-family: 'Cinzel', serif; font-size: 1.1rem; color: var(--gold-dark); font-weight: bold; }
+    .addon-card { background: var(--cream); padding: 2.5rem 2rem; grid-column: 1 / -1; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 2rem; }
+    .addon-price { display:inline-block; font-family:'Cinzel',serif; font-size:1rem; font-weight:700; color:#FFF; background:linear-gradient(135deg,var(--gold),var(--gold-dark)); padding:6px 14px; border-radius:3px;  letter-spacing:.08em; box-shadow:0 4px 12px rgba(201,168,76,.25); }
+
+    /* GALLERY */
+    #gallery { background: var(--dark); padding: 100px 5vw; }
+    #gallery .section-title { color: var(--cream); }
+    .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 3rem; }
+    .gallery-item { position: relative; overflow: hidden; aspect-ratio: 4/3; background: #1A1710; cursor: pointer; }
+    .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease, filter 0.5s ease; filter: brightness(0.8) sepia(15%); }
+    .gallery-item:hover img { transform: scale(1.06); filter: brightness(1) sepia(0%); }
+    .gallery-item .overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.6) 0%, transparent 60%); opacity: 0; transition: opacity 0.4s; display: flex; align-items: flex-end; padding: 1.2rem; }
+    .gallery-item:hover .overlay { opacity: 1; }
+    .gallery-item .overlay span { font-family: 'Cinzel', serif; font-size: 0.65rem; letter-spacing: 0.2em; color: var(--gold-light); text-transform: uppercase; }
+    .gallery-item.tall { grid-row: span 2; aspect-ratio: auto; }
+    .gallery-item.wide { grid-column: span 2; }
+    @media(max-width:600px) { .gallery-grid { grid-template-columns: 1fr 1fr; } .gallery-item.tall,.gallery-item.wide { grid-column: auto; grid-row: auto; aspect-ratio: 4/3; } }
+
+    /* GIFT CARDS */
+    #gift { background: var(--cream); }
+    .gift-inner { max-width: 900px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 5vw; align-items: center; }
+    .gift-visual { background: linear-gradient(135deg, #0E0D0B, #1A1710); border: 1px solid rgba(201,168,76,0.35); padding: 3rem 2rem; text-align: center; position: relative; overflow: hidden; }
+    .gift-visual::before { content: ''; position: absolute; inset: -1px; background: linear-gradient(135deg, var(--gold), transparent 50%, var(--gold)); opacity: 0.15; pointer-events: none; }
+    .gift-visual img { height: 70px; margin-bottom: 1.5rem; }
+    .gift-visual h3 { font-family: 'Cinzel', serif; font-size: 1rem; letter-spacing: 0.25em; color: var(--gold); text-transform: uppercase; margin-bottom: 0.5rem; }
+    .gift-visual p { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; color: rgba(255,255,255,0.5); }
+    .gift-amounts { display: flex; flex-wrap: wrap; gap: 0.75rem; margin: 1.5rem 0; }
+    .gift-amt-btn { border: 1px solid rgba(247, 245, 240, 0.89); background: transparent; color: var(--text); font-family: 'Cinzel', serif; font-size: 0.85rem; letter-spacing: 0.1em; padding: 10px 18px; cursor: pointer; transition: all 0.25s; }
+    .gift-amt-btn:hover, .gift-amt-btn.active { background: var(--gold); border-color: var(--gold); color: var(--dark); }
+    .gift-custom { width: 100%; border: 1px solid rgba(201,168,76,0.3); background: #fff; padding: 12px 16px; font-family: 'Raleway', sans-serif; font-size: 0.9rem; color: var(--text); margin-bottom: 1rem; outline: none; }
+    .gift-custom:focus { border-color: var(--gold); }
+    .gift-form input[type=text], .gift-form input[type=email] { width: 100%; border: 1px solid rgba(201,168,76,0.25); background: #fff; padding: 12px 16px; font-family: 'Raleway', sans-serif; font-size: 0.88rem; color: var(--text); margin-bottom: 0.75rem; outline: none; }
+    .gift-form input:focus { border-color: var(--gold); }
+    .gift-submit { width:100%; padding:16px; background:linear-gradient(135deg,var(--gold),var(--gold-dark)); border:none; color:#0E0D0B; font-family:'Cinzel',serif; font-size:0.95rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; cursor:pointer; transition:all .3s ease; box-shadow:0 4px 12px rgba(255, 254, 254, 0.852); }
+    .gift-submit:hover { opacity: 0.85; }
+    .gift-note { font-size: 0.82rem; color: var(--text-light); margin-top: 0.75rem; line-height: 1.6; }
+    @media(max-width:700px) { .gift-inner { grid-template-columns: 1fr; } }
+
+    /* BOOKING FORM */
+    #booking { background: var(--dark); }
+    #booking .section-title { color: var(--cream); }
+    .booking-wrap { max-width: 700px; margin: 3rem auto 0; }
+    .booking-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .form-group { display: flex; flex-direction: column; gap: 6px; }
+    .form-group.full { grid-column: 1 / -1; }
+    .form-group label { font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.8); }
+    .form-group input, .form-group select, .form-group textarea { background: rgba(255,255,255,0.06); border: 1px solid rgba(201,168,76,0.3); color: rgba(255,255,255,0.95); padding: 13px 14px; font-family: 'Raleway', sans-serif; font-size: 0.95rem; outline: none; transition: border-color 0.25s; width: 100%; }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--gold); background: rgba(255,255,255,0.06); }
+    .form-group select option { background: #1A1710; color: #fff; }
+    .form-group textarea { resize: vertical; min-height: 90px; }
+    .form-submit { width: 100%; margin-top: 1.5rem; padding: 16px; background: transparent; border: 1px solid var(--gold); color: var(--gold); font-family: 'Cinzel', serif; font-size: 0.8rem; letter-spacing: 0.3em; text-transform: uppercase; cursor: pointer; transition: all 0.35s; position: relative; overflow: hidden; }
+    .form-submit::before { content: ''; position: absolute; inset: 0; background: var(--gold); transform: translateX(-100%); transition: 0.35s; z-index: 0; }
+    .form-submit span { position: relative; z-index: 1; }
+    .form-submit:hover { color: var(--dark); }
+    .form-submit:hover::before { transform: translateX(0); }
+    .booking-note { text-align: center; margin-top: 1rem; font-size: 0.82rem; color: rgba(255,255,255,0.65); letter-spacing: 0.1em; }
+    .booking-success { display: none; text-align: center; padding: 3rem; border: 1px solid rgba(201,168,76,0.25); }
+    .booking-success .checkmark { font-size: 3rem; margin-bottom: 1rem; }
+    .booking-success h3 { font-family: 'Cinzel', serif; color: var(--gold); letter-spacing: 0.2em; font-size: 1rem; margin-bottom: 0.75rem; }
+    .booking-success p { color: rgba(255,255,255,0.5); font-size: 0.9rem; line-height: 1.7; }
+    @media(max-width:600px) { .booking-grid { grid-template-columns: 1fr; } .form-group.full { grid-column: auto; } }
+
+    /* ABOUT / HOURS */
+    #about { background: linear-gradient(160deg, #0E0D0B, #111408); display: grid; grid-template-columns: 1fr 1fr; gap: 5vw; align-items: start; }
+    #about .section-title { color: var(--cream); }
+    #about p { font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; color: rgba(255,255,255,0.88); line-height: 1.9; margin-bottom: 1.2rem; }
+    .hours-block { background: rgba(201,168,76,0.05); border: 1px solid rgba(201,168,76,0.2); padding: 2.5rem; }
+    .hours-block h3 { font-family: 'Cinzel', serif; font-size: 0.7rem; letter-spacing: 0.3em; color: var(--gold); text-transform: uppercase; margin-bottom: 1.5rem; }
+    .hours-row { display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid rgba(201,168,76,0.08); color: rgba(255,255,255,0.9); font-size: 0.95rem; }
+    .hours-row .day { letter-spacing: 0.08em; }
+    .hours-row .time { color: var(--gold-light); font-weight: 400; }
+
+    /* CONTACT */
+    #contact { background: var(--cream); text-align: center; }
+    .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-top: 3rem; max-width: 900px; margin-left: auto; margin-right: auto; }
+    .contact-card { padding: 2rem 1.5rem; border: 1px solid rgba(201,168,76,0.2); background: #fff; text-align: center; transition: border-color 0.3s, transform 0.3s; }
+    .contact-card:hover { border-color: var(--gold); transform: translateY(-4px); }
+    .contact-card .icon { font-size: 1.8rem; margin-bottom: 1rem; }
+    .contact-card h4 { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.3em; color: var(--gold); text-transform: uppercase; margin-bottom: 0.75rem; }
+    .contact-card p, .contact-card a { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; color: var(--text); text-decoration: none; line-height: 1.6; }
+    .contact-card a:hover { color: var(--gold-dark); }
+    .map-embed { margin-top: 3rem; border: 1px solid rgba(201,168,76,0.2); overflow: hidden; max-width: 900px; margin-left: auto; margin-right: auto; }
+    .map-embed iframe { width: 100%; height: 380px; border: 0; display: block; filter: grayscale(25%) sepia(10%); }
+
+    /* PROMOTIONS BANNER */
+    .promo-bar { background: linear-gradient(90deg, var(--gold-dark), var(--gold), var(--gold-dark)); text-align: center; padding: 14px 5vw; }
+    .promo-bar p { font-family: 'Cinzel', serif; font-size: 0.9rem; font-weight: bold; letter-spacing: 0.25em; color:black; text-transform: uppercase; }
+
+    /* FOOTER */
+    footer { background: var(--dark); text-align: center; padding: 3rem 5vw; border-top: 1px solid rgba(201,168,76,0.15); }
+    footer img { height: 52px; margin-bottom: 1.2rem; }
+    footer p { font-size: 0.82rem; letter-spacing: 0.15em; color: rgba(255,255,255,0.7); text-transform: uppercase; }
+    .footer-gold { color: var(--gold); font-family: 'Cinzel', serif; font-size: 0.85rem; letter-spacing: 0.3em; display: block; margin-bottom: 0.75rem; }
+    .footer-links { display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; margin: 1rem 0; }
+    .footer-links a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 0.78rem; letter-spacing: 0.15em; text-transform: uppercase; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--gold); }
+
+    /* ANIMATIONS */
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: translateY(0); } }
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* RESPONSIVE */
+    @media(max-width:768px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      #about { grid-template-columns: 1fr; gap: 3rem; }
+      .addon-card { grid-column: auto; }
+      section { padding: 70px 5vw; }
+      .gallery-grid { grid-template-columns: 1fr 1fr; }
+    }
   </style>
 </head>
+<body>
 
-<body class="bg-[#fbf7ef] text-stone-900">
-
-<!-- HEADER -->
-<header class="sticky top-0 z-50 border-b bg-[#fbf7ef]/95 backdrop-blur">
-  <div class="max-w-7xl mx-auto px-6">
-
-    <!-- Top bar: logo + burger -->
-    <div class="flex items-center justify-between py-3">
-
-      <a href="#home" class="flex items-center gap-4">
-        <img src="logo.png" alt="Isarn Spa Logo" class="h-32 w-auto">
-        <div>
-          <div class="text-xl font-bold">Isarn Spa</div>
-          <div class="text-xs tracking-widest text-gray-500">THAI WELLNESS</div>
-        </div>
-      </a>
-
-      <!-- Desktop nav -->
-      <nav class="hidden md:flex items-center gap-6 font-semibold">
-        <a href="#home" class="hover:text-emerald-800 transition-colors">Home</a>
-        <a href="#services" class="hover:text-emerald-800 transition-colors">Services</a>
-        <a href="#experience" class="hover:text-emerald-800 transition-colors">Experience</a>
-        <a href="#visit" class="hover:text-emerald-800 transition-colors">Visit</a>
-        <a href="#visit" class="bg-emerald-900 text-white px-5 py-2 rounded-full text-sm">Book Now</a>
-      </nav>
-
-      <!-- Hamburger button (mobile only) -->
-      <button id="burger-btn" class="md:hidden flex flex-col gap-[5px] p-2 -mr-2 text-stone-900" aria-label="Toggle menu" aria-expanded="false">
-        <span class="bar"></span>
-        <span class="bar"></span>
-        <span class="bar"></span>
-      </button>
-    </div>
-
-    <!-- Mobile dropdown menu -->
-    <div id="mobile-menu">
-      <nav class="flex flex-col gap-1 pb-4 font-semibold border-t pt-3">
-        <a href="#home"       class="py-2 px-2 hover:bg-emerald-50 rounded-lg transition-colors" onclick="closeMenu()">Home</a>
-        <a href="#services"   class="py-2 px-2 hover:bg-emerald-50 rounded-lg transition-colors" onclick="closeMenu()">Services</a>
-        <a href="#experience" class="py-2 px-2 hover:bg-emerald-50 rounded-lg transition-colors" onclick="closeMenu()">Experience</a>
-        <a href="#visit"      class="py-2 px-2 hover:bg-emerald-50 rounded-lg transition-colors" onclick="closeMenu()">Visit</a>
-        <a href="#visit" class="mt-2 bg-emerald-900 text-white px-5 py-3 rounded-full text-center" onclick="closeMenu()">Book Now</a>
-      </nav>
-    </div>
-
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#hero">
+    <img src="isarn_black_gold.png" alt="Isarn Thai Spa Logo" />
+    <span>Isarn Thai Spa</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#gift">Gift Cards</a></li>
+    <li><a href="#booking">Book</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#booking" class="nav-cta">Reserve Now</a></li>
+  </ul>
+  <div class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
   </div>
-</header>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#services" onclick="toggleMenu()">Services</a>
+  <a href="#gallery" onclick="toggleMenu()">Gallery</a>
+  <a href="#gift" onclick="toggleMenu()">Gift Cards</a>
+  <a href="#booking" onclick="toggleMenu()">Book Appointment</a>
+  <a href="#contact" onclick="toggleMenu()">Contact</a>
+  <a href="#booking" onclick="toggleMenu()" style="color:var(--gold)">✦ Reserve Now</a>
+</div>
+
+<!-- PROMO BAR -->
+<div class="promo-bar" style="margin-top:68px;">
+  <p>✦ Walk-Ins Welcome &nbsp;·&nbsp; Add Hot Stones or Foot Scrub to Any Session for just $15 &nbsp;·&nbsp; Call 928-929-2922 ✦</p>
+</div>
 
 <!-- HERO -->
-<section id="home" class="py-20 px-6 max-w-7xl mx-auto grid md:grid-cols-2 gap-10 items-center">
-  <div>
-    <h1 class="text-3xl md:text-4xl font-bold leading-tight">
-      Relax, renew, and feel at home.
-    </h1>
-    <p class="mt-6 text-lg text-gray-600">
-      Isarn Spa brings warm Thai hospitality and deeply restorative wellness treatments to your neighborhood.
-    </p>
-     <div class="mt-8 flex gap-3">
-      <a href="#visit" class="bg-emerald-900 text-white px-4 py-3 rounded-full text-sm md:px-6 md:text-base whitespace-nowrap">Book Appointment</a>
-      <a href="#services" class="border px-4 py-3 rounded-full text-sm md:px-6 md:text-base whitespace-nowrap">View Services</a>
-    </div>
-    
+<section id="hero" style="margin-top:0;">
+  <div class="hero-bg"></div>
+  <div class="hero-ornament"></div>
+  <img class="hero-logo" src="isarn_black_gold.png" alt="Isarn Thai Spa" />
+  <h1>Isarn Thai Spa</h1>
+  <p class="tagline">Traditional Thai &nbsp;•&nbsp; Natural Therapy &nbsp;•&nbsp; Pure Relaxation</p>
+  <div class="hero-divider"></div>
+  <div class="hero-hours">
+    <strong>Mon – Fri</strong>&nbsp; 10:00 AM – 8:00 PM &nbsp;&nbsp;|&nbsp;&nbsp; <strong>Sat – Sun</strong>&nbsp; 11:00 AM – 7:00 PM<br/>
+    <span style="color:rgba(255,255,255,0.75);font-size:0.85rem;">8607 Antioch Road, Salem, WI 53168</span>
   </div>
+  <div class="hero-btns">
+    <a href="#booking" class="btn-book">Book Appointment</a>
+    <a href="#gift" class="btn-gift">🎁 Gift Cards</a>
+  </div>
+</section>
 
-  <div class="bg-emerald-900 text-white p-8 rounded-3xl">
-    <h2 class="text-3xl font-bold">Isarn Thai Massage</h2>
-    <p class="mt-4 text-gray-200">
-      A peaceful blend of Thai pressure therapy, gentle stretching, and aromatic oils.
-    </p>
-    <div class="mt-6 text-2xl font-bold">$85</div>
+<!-- INTRO -->
+<section id="intro">
+  <span class="section-label">Our Philosophy</span>
+  <h2 class="section-title" style="color:var(--cream);">Healing rooted in <em>ancient tradition</em></h2>
+  <div class="gold-line center"></div>
+  <p>At Isarn Thai Spa, every treatment draws from centuries of Thai healing wisdom, blending authentic technique with natural remedies to restore harmony between body and mind.</p>
+  <div class="pillars">
+    <div class="pillar"><div class="pillar-icon">🌿</div><h4>Natural Therapy</h4></div>
+    <div class="pillar"><div class="pillar-icon">🪷</div><h4>Thai Tradition</h4></div>
+    <div class="pillar"><div class="pillar-icon">✨</div><h4>Pure Relaxation</h4></div>
+    <div class="pillar"><div class="pillar-icon">🖐</div><h4>Expert Touch</h4></div>
   </div>
 </section>
 
 <!-- SERVICES -->
-<section id="services" class="max-w-7xl mx-auto px-6 py-20">
-  <h2 class="text-4xl font-bold mb-10">Our Services</h2>
-
-  <div class="grid md:grid-cols-4 gap-6">
-    <div class="bg-white p-6 rounded-2xl shadow">
-      <h3 class="text-xl font-bold">Traditional Thai Massage</h3>
-      <p class="text-sm text-gray-500">60 / 90 min</p>
-      <p class="mt-3 text-gray-600">Deep stretching and pressure therapy.</p>
+<section id="services">
+  <span class="section-label reveal">Our Treatments</span>
+  <h2 class="section-title reveal">A menu crafted for <em>every body</em></h2>
+  <div class="gold-line reveal"></div>
+  <div class="services-grid">
+    <div class="service-card reveal">
+      <div class="service-accent" style="background:#5A8A3C;"></div>
+      <h3>Swedish Massage</h3>
+      <p class="desc">A classic full-body massage using long, gliding strokes, kneading, and gentle friction to ease tension, improve circulation, and leave you in a state of deep calm. Perfect for first-time guests or anyone seeking ultimate relaxation.</p>
+      <div class="price-grid">
+        <div class="price-item"><span class="dur">30 min</span><span class="amt">$50</span></div>
+        <div class="price-item"><span class="dur">60 min</span><span class="amt">$80</span></div>
+        <div class="price-item"><span class="dur">90 min</span><span class="amt">$120</span></div>
+        <div class="price-item"><span class="dur">120 min</span><span class="amt">$155</span></div>
+      </div>
     </div>
-
-    <div class="bg-white p-6 rounded-2xl shadow">
-      <h3 class="text-xl font-bold">Aromatherapy Massage</h3>
-      <p class="text-sm text-gray-500">60 / 90 min</p>
-      <p class="mt-3 text-gray-600">Relaxing oils and calming experience.</p>
+    <div class="service-card reveal">
+      <div class="service-accent" style="background:#7A1A1A;"></div>
+      <h3>Thai Combination Massage</h3>
+      <p class="desc">A fusion of multiple massage styles and modalities working together to amplify the healing effects of each. Combining techniques is said to increase circulation, relieve muscle tension, and create a balanced, deeply restorative experience.</p>
+      <div class="price-grid">
+        <div class="price-item"><span class="dur">30 min</span><span class="amt">$50</span></div>
+        <div class="price-item"><span class="dur">60 min</span><span class="amt">$80</span></div>
+        <div class="price-item"><span class="dur">90 min</span><span class="amt">$120</span></div>
+        <div class="price-item"><span class="dur">120 min</span><span class="amt">$155</span></div>
+      </div>
     </div>
-
-    <div class="bg-white p-6 rounded-2xl shadow">
-      <h3 class="text-xl font-bold">Hot Stone Therapy</h3>
-      <p class="text-sm text-gray-500">75 / 90 min</p>
-      <p class="mt-3 text-gray-600">Warm stones relieve tension.</p>
+    <div class="service-card reveal">
+      <div class="service-accent" style="background:#1A4A7A;"></div>
+      <h3>Deep Tissue Massage</h3>
+      <p class="desc">A therapeutic technique targeting the deeper layers of muscle and connective tissue. Designed to treat chronic pain, muscle tension, and injuries — applying firm, focused pressure to areas of tightness and muscle knots for lasting relief.</p>
+      <div class="price-grid">
+        <div class="price-item"><span class="dur">30 min</span><span class="amt">$60</span></div>
+        <div class="price-item"><span class="dur">60 min</span><span class="amt">$90</span></div>
+        <div class="price-item"><span class="dur">90 min</span><span class="amt">$130</span></div>
+        <div class="price-item"><span class="dur">120 min</span><span class="amt">$175</span></div>
+      </div>
     </div>
-
-    <div class="bg-white p-6 rounded-2xl shadow">
-      <h3 class="text-xl font-bold">Couples Retreat</h3>
-      <p class="text-sm text-gray-500">90 min</p>
-      <p class="mt-3 text-gray-600">Perfect shared experience.</p>
+    <div class="service-card reveal">
+      <div class="service-accent" style="background:#5A2D7A;"></div>
+      <h3>Thai Traditional Massage</h3>
+      <p class="desc">An ancient healing art using rhythmic compressions, acupressure, and passive yoga-like stretching. Emphatically holistic — it realigns energy pathways while relieving deep tension throughout the body using the full depth of Thai healing tradition.</p>
+      <div class="price-grid">
+        <div class="price-item"><span class="dur">30 min</span><span class="amt">$70</span></div>
+        <div class="price-item"><span class="dur">60 min</span><span class="amt">$100</span></div>
+        <div class="price-item"><span class="dur">90 min</span><span class="amt">$140</span></div>
+        <div class="price-item"><span class="dur">120 min</span><span class="amt">$195</span></div>
+      </div>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-accent" style="background:#B8860B;"></div>
+      <h3>Body Scrub &amp; Massage</h3>
+      <p class="desc">A luxurious 90-minute ritual: 60 minutes of oil massage, followed by a full-body revitalizing scrub and a soothing bath. The final 30 minutes nourish your skin with conditioning lotion — leaving it silky, glowing, and completely renewed.</p>
+      <div style="margin-top:1.2rem;">
+        <div class="price-item" style="border-bottom:none;">
+          <span class="dur" style="font-size:0.9rem;">90-Minute Ritual</span>
+          <span class="amt" style="font-size:1.05rem;">$185</span>
+        </div>
+      </div>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-accent" style="background:#C07A1A;"></div>
+      <h3>Foot Massage</h3>
+      <p class="desc">A deeply restorative treatment focused on feet and lower legs, stimulating reflex zones that correspond to organs and body systems. Relieves fatigue, improves circulation, and leaves you feeling grounded and completely light-footed.</p>
+      <div class="price-grid">
+        <div class="price-item"><span class="dur">30 min</span><span class="amt">$50</span></div>
+        <div class="price-item"><span class="dur">60 min</span><span class="amt">$70</span></div>
+        <div class="price-item"><span class="dur">90 min</span><span class="amt">$115</span></div>
+        <div class="price-item"><span class="dur">120 min</span><span class="amt">$135</span></div>
+      </div>
+    </div>
+    <div class="addon-card reveal">
+      <div>
+        <div class="service-accent" style="background:var(--gold);"></div>
+        <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.45rem;font-weight:500;color:var(--dark);margin-bottom:0.8rem;">Enhance Your Treatment</h3>
+        <p class="desc">Elevate any massage session with our signature add-ons — just $15 each.</p>
+      </div>
+      <div>
+        <span class="addon-price">Add-On +$15</span>
+        <h4 style="font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:500;color:var(--dark);margin-bottom:0.5rem;">Foot Scrub</h4>
+        <p class="desc">Exfoliate and soften the feet with a mineral-rich scrub, buffing away rough skin to reveal refreshed, smooth soles.</p>
+      </div>
+      <div>
+        <span class="addon-price">Add-On +$15</span>
+        <h4 style="font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:500;color:var(--dark);margin-bottom:0.5rem;">Hot Stones</h4>
+        <p class="desc">Smooth, heated basalt stones incorporated into your massage, melting tension deeper and creating a profoundly warming, relaxing sensation.</p>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- EXPERIENCE -->
-<section id="experience" class="bg-emerald-900 text-white py-20 px-6">
-  <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-10">
-    <div>
-      <h2 class="text-4xl font-bold">Thai warmth. Modern comfort.</h2>
-      <p class="mt-6 text-gray-200">
-        Warm greetings, soothing aromas, and peaceful atmosphere.
-      </p>
+<!-- GALLERY -->
+<section id="gallery">
+  <span class="section-label reveal" style="color:rgba(201,168,76,0.7);">Atmosphere</span>
+  <h2 class="section-title reveal">Step into <em>pure serenity</em></h2>
+  <div class="gold-line reveal"></div>
+  <div class="gallery-grid">
+    <div class="gallery-item tall reveal">
+      <img src="https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?w=600&q=80" alt="Thai spa treatment room" loading="lazy" />
+      <div class="overlay"><span>Treatment Rooms</span></div>
     </div>
-
-    <div class="grid grid-cols-2 gap-4">
-      <div class="bg-white/10 p-4 rounded-xl">Authentic Thai treatments</div>
-      <div class="bg-white/10 p-4 rounded-xl">Private rooms</div>
-      <div class="bg-white/10 p-4 rounded-xl">Licensed therapists</div>
-      <div class="bg-white/10 p-4 rounded-xl">Natural oils</div>
+    <div class="gallery-item reveal">
+      <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=600&q=80" alt="Thai massage therapy" loading="lazy" />
+      <div class="overlay"><span>Thai Massage</span></div>
+    </div>
+    <div class="gallery-item reveal">
+      <img src="https://images.unsplash.com/photo-1519823551278-64ac92734fb1?w=600&q=80" alt="Hot stone massage" loading="lazy" />
+      <div class="overlay"><span>Hot Stones</span></div>
+    </div>
+    <div class="gallery-item wide reveal">
+      <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=900&q=80" alt="Spa relaxation lounge" loading="lazy" />
+      <div class="overlay"><span>Relaxation Lounge</span></div>
+    </div>
+    <div class="gallery-item reveal">
+      <img src="https://images.unsplash.com/photo-1614159103897-47b8cdca6ee7?w=600&q=80" alt="Foot massage" loading="lazy" />
+      <div class="overlay"><span>Foot Massage</span></div>
+    </div>
+    <div class="gallery-item reveal">
+      <img src="https://images.unsplash.com/photo-1552693673-1bf958298935?w=600&q=80" alt="Body scrub treatment" loading="lazy" />
+      <div class="overlay"><span>Body Scrub</span></div>
     </div>
   </div>
 </section>
 
-<!-- VISIT -->
-<section id="visit" class="max-w-7xl mx-auto px-6 py-20">
-  <h2 class="text-4xl font-bold mb-6">Visit Us</h2>
-
-  <div class="grid md:grid-cols-2 gap-6">
-    <div class="space-y-2">
-      <p>📍 Your City, USA</p>
-      <p>☎ 858-951-7988</p>
-      <p>✉ isarnspa@gmail.com</p>
-      <p>⏰ Mon–Sun 10am–8pm</p>
+<!-- GIFT CARDS -->
+<section id="gift">
+  <span class="section-label reveal">Gifts of Wellness</span>
+  <h2 class="section-title reveal">Give the gift of <em>relaxation</em></h2>
+  <div class="gold-line reveal"></div>
+  <div class="gift-inner">
+    <div class="gift-visual reveal">
+      <img src="isarn_black_gold.png" alt="Isarn Thai Spa" />
+      <h3>Isarn Thai Spa</h3>
+      <p>Gift Certificate</p>
+      <div style="margin-top:1.5rem;border-top:1px solid rgba(201,168,76,0.2);padding-top:1.5rem;">
+        <p style="font-family:'Cinzel',serif;font-size:0.6rem;letter-spacing:0.25em;color:rgba(201,168,76,0.5);text-transform:uppercase;">The perfect gift for any occasion</p>
+      </div>
     </div>
-
-    <div class="bg-amber-200 p-6 rounded-2xl">
-      <h3 class="text-2xl font-bold">Grand Opening</h3>
-      <p class="mt-2">15% off your first visit</p>
+    <div class="reveal">
+      <p style="font-family:'Cormorant Garamond',serif;font-size:1.15rem;color:var(--text);line-height:1.8;margin-bottom:1.5rem;">Treat someone special to the healing touch of Isarn Thai Spa. Our gift certificates are available in any amount and can be redeemed for any service.</p>
+      <div class="gift-amounts">
+        <button class="gift-amt-btn" onclick="selectAmt(this,'$50')">$50</button>
+        <button class="gift-amt-btn" onclick="selectAmt(this,'$80')">$80</button>
+        <button class="gift-amt-btn" onclick="selectAmt(this,'$100')">$100</button>
+        <button class="gift-amt-btn" onclick="selectAmt(this,'$120')">$120</button>
+        <button class="gift-amt-btn" onclick="selectAmt(this,'$155')">$155</button>
+        <button class="gift-amt-btn" onclick="selectAmt(this,'$185')">$185</button>
+      </div>
+      <input class="gift-custom" type="text" id="giftCustom" placeholder="Or enter custom amount (e.g. $200)" />
+      <div class="gift-form">
+        <input type="text" placeholder="Recipient's Name" />
+        <input type="email" placeholder="Your Email (for confirmation)" />
+        <button class="gift-submit" onclick="submitGift()">Request Gift Certificate</button>
+      </div>
+      <p class="gift-note">* Gift certificates are processed by phone. After submitting, our team will contact you at <strong>928-929-2922</strong> to complete your purchase. Gift certificates never expire.</p>
     </div>
+  </div>
+</section>
+
+<!-- BOOKING FORM -->
+<section id="booking">
+  <span class="section-label reveal" style="color:rgba(201,168,76,0.7);">Reservations</span>
+  <h2 class="section-title reveal">Book your <em>session</em></h2>
+  <div class="gold-line reveal"></div>
+  <p class="reveal" style="color:rgba(255,255,255,0.85);font-family:'Cormorant Garamond',serif;font-size:1.15rem;max-width:560px;">Fill in your preferences and we'll confirm your appointment by phone or email within a few hours. Walk-ins always welcome.</p>
+
+  <div class="booking-wrap">
+    <div id="bookingForm">
+      <div class="booking-grid reveal">
+        <div class="form-group">
+          <label>First Name</label>
+          <input type="text" id="bFirstName" placeholder="Jane" />
+        </div>
+        <div class="form-group">
+          <label>Last Name</label>
+          <input type="text" id="bLastName" placeholder="Smith" />
+        </div>
+        <div class="form-group">
+          <label>Phone Number</label>
+          <input type="text" id="bPhone" placeholder="(555) 000-0000" />
+        </div>
+        <div class="form-group">
+          <label>Email</label>
+          <input type="text" id="bEmail" placeholder="jane@email.com" />
+        </div>
+        <div class="form-group">
+          <label>Preferred Service</label>
+          <select id="bService">
+            <option value="">Select a service…</option>
+            <option>Swedish Massage</option>
+            <option>Thai Combination Massage</option>
+            <option>Deep Tissue Massage</option>
+            <option>Thai Traditional Massage</option>
+            <option>Body Scrub &amp; Massage</option>
+            <option>Foot Massage</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Duration</label>
+          <select id="bDuration">
+            <option value="">Select duration…</option>
+            <option>30 minutes</option>
+            <option>60 minutes</option>
+            <option>90 minutes</option>
+            <option>120 minutes</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Preferred Date</label>
+          <input type="date" id="bDate" />
+        </div>
+        <div class="form-group">
+          <label>Preferred Time</label>
+          <select id="bTime">
+            <option value="">Select time…</option>
+            <option>10:00 AM</option>
+            <option>11:00 AM</option>
+            <option>12:00 PM</option>
+            <option>1:00 PM</option>
+            <option>2:00 PM</option>
+            <option>3:00 PM</option>
+            <option>4:00 PM</option>
+            <option>5:00 PM</option>
+            <option>6:00 PM</option>
+            <option>7:00 PM</option>
+          </select>
+        </div>
+        <div class="form-group full">
+          <label>Add-Ons</label>
+          <select id="bAddons">
+            <option value="">No add-ons</option>
+            <option>Hot Stones (+$15)</option>
+            <option>Foot Scrub (+$15)</option>
+            <option>Hot Stones &amp; Foot Scrub (+$30)</option>
+          </select>
+        </div>
+        <div class="form-group full">
+          <label>Special Requests / Notes</label>
+          <textarea id="bNotes" placeholder="Any areas of focus, allergies, or special requests…"></textarea>
+        </div>
+      </div>
+      <button class="form-submit reveal" onclick="submitBooking()"><span>Request Appointment</span></button>
+      <p class="booking-note reveal">We'll confirm your booking by phone or email · Walk-ins always welcome</p>
+    </div>
+    <div class="booking-success" id="bookingSuccess">
+      <div class="checkmark">✦</div>
+      <h3>Appointment Request Received!</h3>
+      <p>Thank you! We'll confirm your booking shortly.<br/>Questions? Call us at <a href="tel:9289292922" style="color:var(--gold-light);">928-929-2922</a>.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT / HOURS -->
+<section id="about">
+  <div>
+    <span class="section-label" style="color:rgba(201,168,76,0.7);">About Us</span>
+    <h2 class="section-title reveal">Where <em>tradition</em> meets serenity</h2>
+    <div class="gold-line"></div>
+    <p class="reveal">Isarn Thai Spa brings the time-honoured healing arts of northeastern Thailand to Salem, Wisconsin. Our skilled therapists are trained in authentic techniques passed down through generations, ensuring every session is both a cultural and deeply physical experience.</p>
+    <p class="reveal">Whether you seek relief from chronic tension, a restorative escape from daily stress, or a special ritual for your skin, our menu of treatments is designed to meet you exactly where you are.</p>
+    <p class="reveal" style="color:rgba(255,255,255,0.8);font-size:0.95rem;letter-spacing:0.08em;line-height:1.9;">
+      8607 Antioch Road, Salem, WI 53168<br/>
+      📞 <a href="tel:9289292922" style="color:var(--gold-light);text-decoration:none;">928-929-2922</a><br/>
+      ✉ <a href="mailto:isarnthaispa@gmail.com" style="color:var(--gold-light);text-decoration:none;">isarnthaispa@gmail.com</a>
+    </p>
+  </div>
+  <div>
+    <div class="hours-block reveal">
+      <h3>Opening Hours</h3>
+      <div class="hours-row"><span class="day">Monday</span><span class="time">10:00 AM – 8:00 PM</span></div>
+      <div class="hours-row"><span class="day">Tuesday</span><span class="time">10:00 AM – 8:00 PM</span></div>
+      <div class="hours-row"><span class="day">Wednesday</span><span class="time">10:00 AM – 8:00 PM</span></div>
+      <div class="hours-row"><span class="day">Thursday</span><span class="time">10:00 AM – 8:00 PM</span></div>
+      <div class="hours-row"><span class="day">Friday</span><span class="time">10:00 AM – 8:00 PM</span></div>
+      <div class="hours-row"><span class="day">Saturday</span><span class="time">11:00 AM – 7:00 PM</span></div>
+      <div class="hours-row" style="border-bottom:none;"><span class="day">Sunday</span><span class="time">11:00 AM – 7:00 PM</span></div>
+    </div>
+    <div style="margin-top:1.5rem;padding:1.5rem 2rem;background:rgba(201,168,76,0.06);border:1px solid rgba(201,168,76,0.15);text-align:center;" class="reveal">
+      <p style="color:rgba(255,255,255,0.85);font-size:0.88rem;letter-spacing:0.12em;text-transform:uppercase;">Walk-ins Welcome · Appointments Preferred</p>
+      <a href="tel:9289292922" style="display:inline-block;margin-top:1rem;padding:12px 32px;border:1px solid var(--gold);color:var(--gold);font-family:'Cinzel',serif;font-size:0.75rem;letter-spacing:0.25em;text-transform:uppercase;text-decoration:none;transition:all 0.3s;" onmouseover="this.style.background='var(--gold)';this.style.color='#0E0D0B'" onmouseout="this.style.background='transparent';this.style.color='var(--gold)'">Call to Reserve</a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <span class="section-label reveal">Find Us</span>
+  <h2 class="section-title reveal">Visit <em>Isarn Thai Spa</em></h2>
+  <div class="gold-line center reveal"></div>
+  <div class="contact-grid">
+    <div class="contact-card reveal"><div class="icon">📍</div><h4>Location</h4><p>8607 Antioch Road<br/>Salem, WI 53168</p></div>
+    <div class="contact-card reveal"><div class="icon">📞</div><h4>Phone</h4><a href="tel:9289292922">928-929-2922</a></div>
+    <div class="contact-card reveal"><div class="icon">✉️</div><h4>Email</h4><a href="mailto:isarnthaispa@gmail.com">isarnthaispa@gmail.com</a></div>
+    <div class="contact-card reveal"><div class="icon">🌐</div><h4>Website</h4><a href="https://isarnspa.com">isarnspa.com</a></div>
+  </div>
+  <div class="map-embed reveal">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2961.2684!2d-88.094!3d42.5!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x880501e37a9a4fff%3A0x1234!2s8607+Antioch+Rd%2C+Salem%2C+WI+53168!5e0!3m2!1sen!2sus!4v1" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Isarn Thai Spa Location"></iframe>
+  </div>
+  <div style="margin-top:1rem;text-align:center;">
+    <a href="https://maps.app.goo.gl/RAevoLncNoxhP7V6A" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;font-family:'Cinzel',serif;font-size:0.72rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold-dark);text-decoration:none;border-bottom:1px solid rgba(201,168,76,0.3);padding-bottom:2px;">↗ Open in Google Maps</a>
   </div>
 </section>
 
 <!-- FOOTER -->
-<footer class="text-center py-6 border-t">
-  © 2026 Isarn Spa
+<footer>
+  <img src="isarn_black_gold.png" alt="Isarn Thai Spa" />
+  <span class="footer-gold">Isarn Thai Spa</span>
+  <div class="footer-links">
+    <a href="#services">Services</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#gift">Gift Cards</a>
+    <a href="#booking">Book Appointment</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <p>8607 Antioch Road, Salem, WI 53168 &nbsp;·&nbsp; 928-929-2922 &nbsp;·&nbsp; isarnthaispa@gmail.com</p>
+  <p style="margin-top:0.5rem;">© 2025 Isarn Thai Spa. All rights reserved.</p>
 </footer>
 
 <script>
-  const btn = document.getElementById('burger-btn');
-  const menu = document.getElementById('mobile-menu');
-
-  btn.addEventListener('click', () => {
-    const isOpen = menu.classList.toggle('open');
-    btn.classList.toggle('open', isOpen);
-    btn.setAttribute('aria-expanded', isOpen);
+  // Mobile menu
+  function toggleMenu() {
+    document.getElementById('mobileMenu').classList.toggle('open');
+  }
+  document.addEventListener('click', e => {
+    const menu = document.getElementById('mobileMenu');
+    if (!e.target.closest('nav') && !e.target.closest('#mobileMenu')) menu.classList.remove('open');
   });
 
-  function closeMenu() {
-    menu.classList.remove('open');
-    btn.classList.remove('open');
-    btn.setAttribute('aria-expanded', false);
+  // Scroll reveal
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Gift card amount selector
+  function selectAmt(btn, amt) {
+    document.querySelectorAll('.gift-amt-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('giftCustom').value = amt;
   }
 
-  // Close menu when clicking outside
-  document.addEventListener('click', (e) => {
-    if (!btn.contains(e.target) && !menu.contains(e.target)) {
-      closeMenu();
-    }
-  });
-</script>
+  function submitGift() {
+    const amt = document.getElementById('giftCustom').value;
+    if (!amt) { alert('Please select or enter a gift card amount.'); return; }
+    alert('Thank you! Our team will call you at 928-929-2922 to complete your gift certificate purchase for ' + amt + '.');
+  }
 
+  // Booking form
+  function submitBooking() {
+    const first = document.getElementById('bFirstName').value.trim();
+    const phone = document.getElementById('bPhone').value.trim();
+    const service = document.getElementById('bService').value;
+    if (!first || !phone || !service) {
+      alert('Please fill in your name, phone number, and desired service.'); return;
+    }
+    document.getElementById('bookingForm').style.display = 'none';
+    const s = document.getElementById('bookingSuccess');
+    s.style.display = 'block';
+    // In production this would POST to a backend / email service
+  }
+
+  // Set min date for booking to today
+  const dateInput = document.getElementById('bDate');
+  if (dateInput) {
+    const today = new Date().toISOString().split('T')[0];
+    dateInput.setAttribute('min', today);
+  }
+</script>
 </body>
 </html>
