@@ -224,8 +224,23 @@
 
     /* PROMOTIONS BANNER */
     .promo-bar { background: linear-gradient(90deg, var(--gold-dark), var(--gold), var(--gold-dark)); text-align: center; padding: 14px 5vw; }
-    .promo-bar p { font-family: 'Cinzel', serif; font-size: 0.9rem; font-weight: bold; letter-spacing: 0.25em; color:black; text-transform: uppercase; }
+    
+    .promo-bar p {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  line-height: 1.6;
+}
 
+@media (max-width: 768px) {
+  .promo-bar p {
+    flex-direction: column;
+    gap: 0.4rem;
+    letter-spacing: 0.08em;
+    font-size: 0.75rem;
+  }
+}
     /* FOOTER */
     footer { background: var(--dark); text-align: center; padding: 3rem 5vw; border-top: 1px solid rgba(201,168,76,0.15); }
     footer img { height: 52px; margin-bottom: 1.2rem; }
@@ -282,8 +297,12 @@
 </div>
 
 <!-- PROMO BAR -->
-<div class="promo-bar" style="margin-top:68px;">
-  <p>✦ Walk-Ins Welcome &nbsp;·&nbsp; Add Hot Stones or Foot Scrub to Any Session for just $15 &nbsp;·&nbsp; Call 928-929-2922 ✦</p>
+<div class="promo-bar">
+  <p>
+    <span>✦ Walk-Ins Welcome</span>
+    <span>Add Hot Stones or Foot Scrub for $15</span>
+    <span>📞 928-929-2922</span>
+  </p>
 </div>
 
 <!-- HERO -->
