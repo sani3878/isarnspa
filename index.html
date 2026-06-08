@@ -116,8 +116,17 @@
     /* SERVICES */
     #services { background: var(--cream); }
     .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5px; background: rgba(201,168,76,0.15); border: 1px solid rgba(201,168,76,0.15); margin-top: 3rem; }
-    .service-card { background: var(--cream); padding: 2.5rem 2rem; position: relative; transition: background 0.3s; overflow: hidden; }
-    
+    .service-card {
+    background: linear-gradient(
+    135deg,
+    #fffdf8 0%,
+    #f8f0d8 60%,
+    #f3e6be 100%
+  );
+  border: 1px solid rgba(201,168,76,.15);
+  border-radius: 12px;
+  padding: 2.5rem 2rem;
+}
     .service-card:hover {
     background: linear-gradient(135deg, #F7E7B5 0%, var(--gold-light) 35%, var(--gold) 100%);
     border-color: rgba(201,168,76,.4);
